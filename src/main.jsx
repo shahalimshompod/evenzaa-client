@@ -8,6 +8,8 @@ import Events from "./Routes/Events.jsx";
 import EventsByCategory from "./Routes/EventsByCategory.jsx";
 import AboutUs from "./Pages/AboutUs.jsx";
 import AddEvent from "./Routes/AddEvents.jsx";
+import EventDetails from "./Routes/EventDetails.jsx";
+import MyEvents from "./Routes/MyEvents.jsx";
 
 const root = document.getElementById("root");
 
@@ -20,6 +22,8 @@ ReactDOM.createRoot(root).render(
         <Route path="/events/:category" element={<EventsByCategory />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/add-event" element={<AddEvent />} />
+        <Route path="/event-details/:id" element={<EventDetails />} />
+        <Route path="/my-events" element={<MyEvents />} />
       </Route>
     </Routes>
   </BrowserRouter>

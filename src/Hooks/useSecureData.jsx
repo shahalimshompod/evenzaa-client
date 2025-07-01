@@ -1,33 +1,38 @@
-// src/hooks/useSecureData.js
-
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import useAxiosSecure from "./useAxiosSecure";
 
 const useSecureData = (endpoint, dependencies = []) => {
+  // axios instance
   const axiosSecure = useAxiosSecure();
+
+  // states
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // fetch function
+  const fetchData = useCallback(async () => {
+    if (!endpoint) return;
+
+    try {
+      setLoading(true);
+      const res = await axiosSecure.get(endpoint);
+      console.log(res?.data);
+      setData(res?.data);
+      setError(null); // reset error
+    } catch (err) {
+      setError(err.response?.data?.message || "Failed to fetch secure data");
+    } finally {
+      setLoading(false);
+    }
+  }, [axiosSecure, endpoint]);
+
   useEffect(() => {
-    if (!endpoint) return; // safety check
-
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const res = await axiosSecure.get(endpoint);
-        setData(res.data);
-      } catch (err) {
-        setError(err.response?.data?.message || "Failed to fetch secure data");
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchData();
-  }, [axiosSecure, endpoint, ...dependencies]); // rerun if any dependency changes
+  }, [fetchData, ...dependencies]);
 
-  return { data, loading, error };
+  // returning data
+  return { data, loading, error, refetch: fetchData };
 };
 
 export default useSecureData;

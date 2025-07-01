@@ -202,7 +202,7 @@ const AddEvent = () => {
             rows={5}
             className={`w-full px-4 py-2 border ${
               errors.description ? "border-red-500" : "border-[#FE3E01]"
-            } rounded focus:outline-none focus:ring-1 focus:ring-[#FE3E01]`}
+            } rounded focus:outline-none focus:ring-1 focus:ring-[#dfb5a9]`}
             placeholder="Enter event description (minimum 100 characters)"
           />
           {errors.description && (

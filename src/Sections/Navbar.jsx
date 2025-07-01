@@ -119,7 +119,7 @@ const Navbar = () => {
     ...(user
       ? [
           { path: "/events", label: "Events" },
-          { path: "/my-bookings", label: "My Events" },
+          { path: "/my-events", label: "My Events" },
           { path: "/add-event", label: "Add Event" },
         ]
       : []),

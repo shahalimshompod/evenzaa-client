@@ -1,13 +1,27 @@
-import React from "react";
-import { Link, useLocation } from "react-router";
+import React, { useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router";
 import { MdDateRange } from "react-icons/md";
 import { FaLocationArrow } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { FaUserTie } from "react-icons/fa";
+import useAuth from "../../Hooks/useAuth";
+import { StateManagementContext } from "../../Contexts/StateContext";
+import toast from "react-hot-toast";
 
 const EventCard = ({ data }) => {
   const routeLocation = useLocation();
+  const navigate = useNavigate();
+
+  // getting the user instance
+  const { isLoggedIn: user } = useAuth();
+
+  // getting state for  calling login modal
+  const { setIsLoginModalOpen } = useContext(StateManagementContext);
+
+  // getting the pathname
   const path = routeLocation.pathname;
+
+  // destructuring data
   const {
     _id,
     title,
@@ -20,6 +34,20 @@ const EventCard = ({ data }) => {
     featured,
     description,
   } = data;
+
+  // handle navigate to details page
+  const handleNavigate = async () => {
+    try {
+      if (!user) {
+        setIsLoginModalOpen(true);
+      } else {
+        navigate(`/event-details/${_id}`);
+      }
+    } catch (error) {
+      toast.error(`Error navigating to details Page: ${error}`);
+    }
+  };
+
   return (
     <div className="bg-base-100 w-full shadow-lg hover:shadow-2xl hover:ease-in-out duration-500">
       <figure className="h-52 overflow-hidden">
@@ -69,12 +97,14 @@ const EventCard = ({ data }) => {
         <div className="border-b border-b-gray-300"></div>
 
         <div className="flex items-center justify-between">
-          <Link to={`/event-details/${_id}`}>
-            <button className="btn border border-[#FE3E01] rounded-none bg-transparent sand transition hover:bg-[#FE3E01] hover:text-white ease-in duration-300 mt-1.5">
-              Join Event
-            </button>
-          </Link>
+          <button
+            onClick={handleNavigate}
+            className="btn border border-[#FE3E01] rounded-none bg-transparent sand transition hover:bg-[#FE3E01] hover:text-white ease-in duration-300 mt-1.5"
+          >
+            Join Event
+          </button>
 
+          {/* attendee count */}
           <div className="flex items-center gap-2 border border-[#FE3E01] p-2">
             <FaUser />
             <p className="sand">{attendeeCount}</p>
