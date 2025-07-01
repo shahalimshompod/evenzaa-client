@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
-import EventCard from "../../Components/EventCard";
-import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useAxiosPublic from "../Hooks/useAxiosPublic"
+import EventCard from "../Components/Cards/EventCard";
 
 const FeaturedEvents = () => {
-    const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic()
   const [featuredData, setFeaturedData] = useState([]);
   const [featuredLoading, setFeaturedLoading] = useState(false);
 
   // fetch function
   const fetchingData = async () => {
     setFeaturedLoading(true);
-    const res = await axiosSecure.get("/featured-events");
+    const res = await axiosPublic.get("/featured-events");
     if (res?.data) {
       setFeaturedData(res?.data);
       setFeaturedLoading(false);

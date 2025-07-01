@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { StateManagementContext } from "../Contexts/StateContext";
 import useAuth from "../Hooks/useAuth";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useUser from "../Hooks/userUser";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -26,6 +27,11 @@ const Navbar = () => {
 
   //   getting user
   const { isLoggedIn } = useAuth();
+
+  // getting user data
+  const { userData } = useUser();
+
+  console.log(userData);
 
   const user = isLoggedIn;
 
@@ -230,8 +236,8 @@ const Navbar = () => {
                   className="btn bg-transparent btn-circle avatar"
                 >
                   <div className="w-10 rounded-full">
-                    {user.photoURL ? (
-                      <img alt="Profile" src={user.photoURL} />
+                    {userData?.image ? (
+                      <img alt="Profile" src={userData?.image} />
                     ) : (
                       <FaUserCircle className={`${textColor}`} size={38} />
                     )}
@@ -243,10 +249,10 @@ const Navbar = () => {
                 >
                   <li className="p-2">
                     <h1 className="font-black text-lg truncate sand">
-                      {user.displayName}
+                      {userData?.name}
                     </h1>
                     <h4 className="font-semibold text-sm truncate sand">
-                      {user.email}
+                      {userData?.email}
                     </h4>
                   </li>
                   <div className="divider my-2"></div>
