@@ -214,7 +214,10 @@ const AddEvent = () => {
 
         {/* Upload Event Image */}
         <div>
-          <label className="sand block mb-1">Event Image</label>
+          <label className="sand block mb-1">
+            Event Image (Upload Image carefully, you can't change image once it
+            uploaded)
+          </label>
           <input
             type="file"
             accept="image/*"

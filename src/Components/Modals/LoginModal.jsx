@@ -2,8 +2,7 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEnvelope, FaLock, FaUser, FaEye, FaEyeSlash } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
-import { FcGoogle } from "react-icons/fc";
-// import toast from "react-hot-toast";
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { StateManagementContext } from "../../Contexts/StateContext";

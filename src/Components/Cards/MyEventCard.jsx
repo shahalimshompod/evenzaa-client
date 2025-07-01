@@ -5,14 +5,13 @@ import { IoTrashBin } from "react-icons/io5";
 const MyEventCard = ({
   event,
   handleDeleteEvent,
-  handleUpdateEvent,
+  setSelectedEventForUpdate,
   deleteLoading,
-  updateLoading,
 }) => {
   return (
     <div
       key={event._id}
-      className="bg-white shadow-md rounded-xl overflow-hidden border border-gray-200"
+      className="bg-white shadow-md hover:shadow-2xl hover:ease-in-out duration-500 overflow-hidden border border-gray-200"
     >
       <div className="flex flex-col md:flex-row gap-4 p-5">
         {/* Image */}
@@ -58,22 +57,18 @@ const MyEventCard = ({
             <div className="flex gap-3">
               {/* update button */}
               <button
-                className="sand flex items-center gap-2 px-4 py-1.5 rounded-md bg-green-100 text-green-800 hover:bg-green-200 text-sm transition"
-                onClick={() => handleUpdateEvent(event._id)}
+                className="cursor-pointer sand flex items-center gap-2 px-4 py-1.5 rounded-md bg-green-100 text-green-800 hover:bg-green-200 text-sm transition"
+                onClick={() => setSelectedEventForUpdate(event)}
               >
-                {updateLoading ? (
-                  "Updating..."
-                ) : (
-                  <div className="flex items-center gap-2">
-                    <FaRegEdit size={16} />
-                    <span>Update</span>
-                  </div>
-                )}
+                <div className="flex items-center gap-2">
+                  <FaRegEdit size={16} />
+                  <span>Update</span>
+                </div>
               </button>
 
               {/* delete button */}
               <button
-                className="sand  px-4 py-1.5 rounded-md bg-red-100 text-red-800 hover:bg-red-200 text-sm transition"
+                className="cursor-pointer sand  px-4 py-1.5 rounded-md bg-red-100 text-red-800 hover:bg-red-200 text-sm transition"
                 onClick={() => handleDeleteEvent(event._id)}
               >
                 {deleteLoading ? (

@@ -1,23 +1,20 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router";
-// eslint-disable-next-line no-unused-vars
-import { motion, AnimatePresence } from "framer-motion";
-import { FaStar, FaRegStar, FaStarHalfAlt, FaUser } from "react-icons/fa";
 import toast from "react-hot-toast";
 import useAuth from "../Hooks/useAuth";
 import { StateManagementContext } from "../Contexts/StateContext";
 import useSecureData from "../Hooks/useSecureData";
 import useUser from "../Hooks/userUser";
-import { IoTrashBin } from "react-icons/io5";
-import { FaRegEdit } from "react-icons/fa";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import MyEventCard from "../Components/Cards/MyEventCard";
+import UpdateEventModal from "../Components/Modals/UpdateEventModal";
 
 const MyEvents = () => {
   // states
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [updateLoading, setUpdateLoading] = useState(false);
+  const [selectedEventForUpdate, setSelectedEventForUpdate] = useState(null);
 
   // getting user instance
   const { isLoggedIn: user } = useAuth();
@@ -69,11 +66,6 @@ const MyEvents = () => {
     }
   };
 
-  //   handle update event
-  const handleUpdateEvent = async (id) => {
-    console.log(id);
-  };
-
   //   if user is not logged in then return
   if (!user) {
     setIsLoginModalOpen(true);
@@ -104,13 +96,13 @@ const MyEvents = () => {
             </Link>
           </div>
         ) : (
-          <div className="space-y-6 max-h-[700px] overflow-y-scroll">
+          <div className="space-y-6">
             {myEvents?.map((event, idx) => (
               <MyEventCard
                 key={idx}
                 event={event}
                 handleDeleteEvent={handleDeleteEvent}
-                handleUpdateEvent={handleUpdateEvent}
+                setSelectedEventForUpdate={setSelectedEventForUpdate}
                 updateLoading={updateLoading}
                 deleteLoading={deleteLoading}
               />
@@ -118,6 +110,14 @@ const MyEvents = () => {
           </div>
         )}
       </div>
+
+      {/* update modal component here */}
+      <UpdateEventModal
+        setSelectedEventForUpdate={setSelectedEventForUpdate}
+        selectedEventForUpdate={selectedEventForUpdate}
+        refetch={refetch}
+        setUpdateLoading={setUpdateLoading}
+      />
     </div>
   );
 };
