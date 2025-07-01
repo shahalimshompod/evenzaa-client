@@ -34,7 +34,7 @@ const WelcomeSection = () => {
           data-aos-delay="0"
           data-aos-duration="700"
         >
-          Welcome to <span className="text-[#FE3E01]">Eventora</span>
+          Welcome to <span className="text-[#FE3E01]">evenzaa</span>
         </h1>
         <p
           className="sand text-lg md:text-xl max-w-3xl mx-auto"
@@ -44,7 +44,7 @@ const WelcomeSection = () => {
         >
           Explore and book your tickets for a wide variety of events including
           sports, music, business, and tech. Enjoy a smooth and hassle-free
-          event discovery and booking experience with Eventora.
+          event discovery and booking experience with evenzaa.
         </p>
       </section>
 

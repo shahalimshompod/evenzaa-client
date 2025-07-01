@@ -11,21 +11,60 @@ import AddEvent from "./Routes/AddEvents.jsx";
 import EventDetails from "./Routes/EventDetails.jsx";
 import MyEvents from "./Routes/MyEvents.jsx";
 import ResultsPage from "./Routes/ResultsPage.jsx";
+import SecureRoute from "./Routes/SecureRoute.jsx";
+import DynamicTitle from "./Components/DynamicTitle/DynamicTitle.jsx";
 
 const root = document.getElementById("root");
 
 ReactDOM.createRoot(root).render(
   <BrowserRouter>
+    <DynamicTitle />
     <Routes>
       <Route path="/" element={<Root />}>
         <Route path="/" element={<HomeLayout />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/events/:category" element={<EventsByCategory />} />
         <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/add-event" element={<AddEvent />} />
-        <Route path="/event-details/:id" element={<EventDetails />} />
-        <Route path="/my-events" element={<MyEvents />} />
         <Route path="/search" element={<ResultsPage />} />
+        {/* secure routes */}
+        <Route
+          path="/events"
+          element={
+            <SecureRoute>
+              <Events />
+            </SecureRoute>
+          }
+        />
+        <Route
+          path="/events/:category"
+          element={
+            <SecureRoute>
+              <EventsByCategory />{" "}
+            </SecureRoute>
+          }
+        />
+        <Route
+          path="/add-event"
+          element={
+            <SecureRoute>
+              <AddEvent />
+            </SecureRoute>
+          }
+        />
+        <Route
+          path="/event-details/:id"
+          element={
+            <SecureRoute>
+              <EventDetails />
+            </SecureRoute>
+          }
+        />
+        <Route
+          path="/my-events"
+          element={
+            <SecureRoute>
+              <MyEvents />
+            </SecureRoute>
+          }
+        />
       </Route>
     </Routes>
   </BrowserRouter>

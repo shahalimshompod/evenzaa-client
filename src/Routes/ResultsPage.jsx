@@ -10,7 +10,6 @@ const ResultsPage = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const query = queryParams.get("q");
-  console.log(query);
 
   //   get fetch data
   const { data: results, loading } = useSecureData(
@@ -20,8 +19,8 @@ const ResultsPage = () => {
   // Set dynamic document title
   useEffect(() => {
     document.title = query
-      ? `Search: ${query} | Eventora`
-      : "Search | Eventora";
+      ? `Search: ${query} | evenzaa`
+      : "Search | evenzaa";
   }, [query]);
 
   const container = {

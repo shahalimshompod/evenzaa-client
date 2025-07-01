@@ -17,7 +17,7 @@ const useSecureData = (endpoint, dependencies = []) => {
     try {
       setLoading(true);
       const res = await axiosSecure.get(endpoint);
-      console.log(res?.data);
+      
       setData(res?.data);
       setError(null); // reset error
     } catch (err) {

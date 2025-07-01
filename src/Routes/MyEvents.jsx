@@ -35,8 +35,6 @@ const MyEvents = () => {
     refetch,
   } = useSecureData(`/my-event-data?email=${userData?.email}`);
 
-  console.log(myEvents);
-
   //   handle delete events
   const handleDeleteEvent = async (id) => {
     try {

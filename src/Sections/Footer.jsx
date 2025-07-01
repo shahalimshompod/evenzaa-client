@@ -10,16 +10,16 @@ const Footer = () => {
         {/* Brand Name */}
         <div className="text-2xl font-semibold">
           <Link to="/" className="flex items-center gap-3">
-            <img className="w-10" src={logoWhite} alt="Eventora logo" />
+            <img className="w-10" src={logoWhite} alt="evenzaa logo" />
             <span className={`text-3xl marcel text-white`}>
-              EVEN<span className="text-[#FE3E01]">T</span>ORA
+              EVEN<span className="text-[#FE3E01]">Z</span>AA
             </span>
           </Link>
         </div>
 
         {/* Copyright */}
         <p className="text-sm mt-4 md:mt-0 sand">
-          &copy; 2025 Eventora. All rights reserved.
+          &copy; 2025 Evenzaa. All rights reserved.
         </p>
 
         {/* Social Icons */}

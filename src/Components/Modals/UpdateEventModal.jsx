@@ -33,7 +33,7 @@ const UpdateEventModal = ({
 
   //   handle update onsubmit
   const onSubmit = async (data) => {
-    console.log(data);
+    
     setIsSubmitting(true);
     try {
       const response = await axiosSecure.put(

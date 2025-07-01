@@ -60,8 +60,6 @@ const AddEvent = () => {
           image: image,
         };
 
-        console.log(finalData);
-
         const response = await axiosSecure.post("/add-event", finalData);
         if (response?.data.insertedId) {
           toast.success("Event Added Successfully!");

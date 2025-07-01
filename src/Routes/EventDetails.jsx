@@ -19,8 +19,6 @@ const EventDetails = () => {
   //   getting login modal state
   const { setIsLoginModalOpen } = useContext(StateManagementContext);
 
-  console.log(user);
-
   //   fetch data by secure hook
   const {
     data: detailsData,
@@ -32,8 +30,8 @@ const EventDetails = () => {
   //   if there is any error or lack of data then show this
   if (error || !detailsData) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <span className="loading loading-ring loading-xl"></span>
+      <div className="flex justify-center items-center py-20 h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#FE3E01]"></div>
       </div>
     );
   }
@@ -60,7 +58,7 @@ const EventDetails = () => {
 
   return (
     <div className="mt-24 mb-0 md:mb-24">
-      <div className="relative events-bg-image py-44">
+      <div className="relative event-details-bg py-44">
         <div className="absolute top-0 left-0 w-full h-full bg-black/85  flex flex-col items-center justify-center text-center">
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#FE3E01]/30 via-[#FE3E01]/20 to-[#FE3E01]/30 flex flex-col items-center justify-center text-center">
             <div
@@ -77,8 +75,8 @@ const EventDetails = () => {
         </div>
       </div>
       {loading || !image ? (
-        <div className="flex justify-center items-center h-[20vh]">
-          <span className="loading loading-ring loading-xl"></span>
+        <div className="flex justify-center items-center py-20 h-[40vh]">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#FE3E01]"></div>
         </div>
       ) : (
         <div

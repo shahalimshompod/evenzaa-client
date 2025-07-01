@@ -74,7 +74,7 @@ const LoginModal = () => {
             "/user_credential",
             userCredential
           );
-          console.log("user_credential req --> response", res?.data);
+
           if (res?.data.insertedId) {
             const imgData = { image: image };
 
@@ -102,7 +102,7 @@ const LoginModal = () => {
                 image: userImage,
               };
               const res = await axiosPublic.post("/user_data", userData);
-              console.log("response from post user data", res?.data);
+              
               if (res?.data.insertedId) {
                 reset();
                 setRegisterLoader(false);
@@ -136,7 +136,7 @@ const LoginModal = () => {
         toast.success(`${res?.data.message}`);
         // access token
         const accessToken = res.data.token;
-        console.log("access token", accessToken);
+        
         // storing access token to localstorage
         localStorage.setItem("user_access_token", accessToken);
         setIsLoggedIn(!!localStorage.getItem("user_access_token"));
@@ -190,7 +190,7 @@ const LoginModal = () => {
               />
               <div className="absolute inset-0 flex flex-col justify-center items-center text-white bg-black/40">
                 <h2 className="text-3xl font-bold marcel">
-                  Welcome To Eventora !
+                  Welcome To evenzaa !
                 </h2>
                 <p className="text-lg mt-2 sand font-semibold">
                   Join us and enjoy exclusive features.
@@ -214,7 +214,7 @@ const LoginModal = () => {
                   style={{ opacity: isLogin ? 1 : 0 }}
                 >
                   <h2 className="text-3xl  font-bold mb-4 marcel">
-                    <span className="text-[#FE3E01]">Eventora</span> Login
+                    <span className="text-[#FE3E01]">evenzaa</span> Login
                   </h2>
 
                   {/* email input */}
@@ -285,7 +285,7 @@ const LoginModal = () => {
                   style={{ opacity: isLogin ? 0 : 1 }}
                 >
                   <h2 className="text-3xl font-bold mb-4 marcel">
-                    <span className="text-[#FE3E01]">Eventora</span> Register
+                    <span className="text-[#FE3E01]">evenzaa</span> Register
                   </h2>
 
                   {/* image input */}

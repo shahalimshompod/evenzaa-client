@@ -29,13 +29,16 @@ const Navbar = () => {
   const { isLoggedIn } = useAuth();
 
   // getting user data
-  const { userData } = useUser();
-
-  console.log(userData);
+  const { userData, refetch } = useUser();
 
   const user = isLoggedIn;
 
-  console.log(user);
+  // refetching user data
+  useEffect(() => {
+    if (user) {
+      refetch();
+    }
+  }, [user]);
 
   const path = location.pathname;
 
@@ -173,10 +176,10 @@ const Navbar = () => {
             <img
               className="w-10"
               src={isHome && !scrolled ? logoWhite : logoBlack}
-              alt="Eventora logo"
+              alt="evenzaa logo"
             />
             <span className={`text-3xl marcel ${textColor}`}>
-              EVEN<span className="text-[#FE3E01]">T</span>ORA
+              EVEN<span className="text-[#FE3E01]">Z</span>AA
             </span>
           </Link>
 
@@ -244,7 +247,7 @@ const Navbar = () => {
                   tabIndex={0}
                   className="menu menu-sm dropdown-content bg-base-100 rounded-box shadow mt-3 w-fit p-2 z-50"
                 >
-                  <li className="p-2">
+                  <li>
                     <h1 className="font-black text-lg truncate sand">
                       {userData?.name}
                     </h1>
@@ -253,17 +256,6 @@ const Navbar = () => {
                     </h4>
                   </li>
                   <div className="divider my-2"></div>
-                  <li>
-                    <NavLink
-                      to="/my-profile"
-                      onClick={() => setMenuOpen(false)}
-                      className={({ isActive }) =>
-                        isActive ? "bg-amber-100" : ""
-                      }
-                    >
-                      <span className="text-lg sand">Profile</span>
-                    </NavLink>
-                  </li>
                   <li>
                     <p className="cursor-pointer" onClick={handleLogout}>
                       <span className="text-lg sand">Logout</span>

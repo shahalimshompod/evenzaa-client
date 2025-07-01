@@ -17,7 +17,6 @@ const JoinEventModal = ({ setSelectedEvent, selectedEvent, fetchData }) => {
   const axiosSecure = useAxiosSecure();
 
   if (!selectedEvent) return null;
-  console.log(selectedEvent._id);
   const { title, organizer, eventDate, time } = selectedEvent;
 
   //   handle join event
@@ -29,8 +28,7 @@ const JoinEventModal = ({ setSelectedEvent, selectedEvent, fetchData }) => {
       const res = await axiosSecure.post(`/join-event/${selectedEvent._id}`, {
         id: id,
       });
-
-      console.log(res?.data);
+      
       if (res?.data.alreadyJoined) {
         // fetch data again to update ui data
         fetchData();
@@ -98,7 +96,7 @@ const JoinEventModal = ({ setSelectedEvent, selectedEvent, fetchData }) => {
             </button>
             <button
               onClick={handleJoinEvent}
-              className="px-6 py-2 rounded bg-[#FE3E01] hover:bg-[#e63700] text-white font-semibold transition"
+              className="cursor-pointer px-6 py-2 rounded bg-[#FE3E01] hover:bg-[#e63700] text-white font-semibold transition"
             >
               {loading ? "Joining..." : "Join Now"}
             </button>
