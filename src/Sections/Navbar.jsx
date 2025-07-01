@@ -5,6 +5,7 @@ import logoWhite from "../../public/assets/logo/logo-white.png";
 import { FaUserCircle, FaBars, FaTimes, FaSearch } from "react-icons/fa";
 import toast from "react-hot-toast";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 import { StateManagementContext } from "../Contexts/StateContext";
 import useAuth from "../Hooks/useAuth";
@@ -14,7 +15,6 @@ import useUser from "../Hooks/userUser";
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [userRole, setUserRole] = useState(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const location = useLocation();
@@ -38,7 +38,6 @@ const Navbar = () => {
   console.log(user);
 
   const path = location.pathname;
-  const role = userRole?.role;
 
   const data = useContext(StateManagementContext);
   const { setIsLoginModalOpen, setIsLoggedIn } = data;
@@ -155,7 +154,7 @@ const Navbar = () => {
                 />
                 <button
                   type="submit"
-                  className="absolute right-0 bottom-2 text-white hover:text-[#FE3E01] transition-colors"
+                  className="absolute right-0 bottom-2 text-white hover:text-[#FE3E01] transition-colors cursor-pointer"
                 >
                   <FaSearch size={24} />
                 </button>
@@ -210,7 +209,7 @@ const Navbar = () => {
             {/* Search Icon */}
             <button
               onClick={toggleSearch}
-              className={`text-xl ${textColor} hover:text-[#FE3E01] transition-colors`}
+              className={`text-xl ${textColor} hover:text-[#FE3E01] transition-colors cursor-pointer`}
               aria-label="Search"
             >
               <FaSearch />

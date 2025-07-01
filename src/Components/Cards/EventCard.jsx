@@ -12,6 +12,14 @@ const EventCard = ({ data }) => {
   const routeLocation = useLocation();
   const navigate = useNavigate();
 
+  // format date
+  const formatDate = (dateString) => {
+    if (!dateString) return "";
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    const dateObj = new Date(dateString);
+    return dateObj.toLocaleDateString(undefined, options);
+  };
+
   // getting the user instance
   const { isLoggedIn: user } = useAuth();
 
@@ -78,7 +86,7 @@ const EventCard = ({ data }) => {
         <p className="flex items-center gap-2 sand">
           <MdDateRange size={20} />
           <span>
-            {eventDate} | {time}
+            {formatDate(eventDate)} | {time}
           </span>
         </p>
 

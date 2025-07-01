@@ -10,6 +10,7 @@ import AboutUs from "./Pages/AboutUs.jsx";
 import AddEvent from "./Routes/AddEvents.jsx";
 import EventDetails from "./Routes/EventDetails.jsx";
 import MyEvents from "./Routes/MyEvents.jsx";
+import ResultsPage from "./Routes/ResultsPage.jsx";
 
 const root = document.getElementById("root");
 
@@ -24,6 +25,7 @@ ReactDOM.createRoot(root).render(
         <Route path="/add-event" element={<AddEvent />} />
         <Route path="/event-details/:id" element={<EventDetails />} />
         <Route path="/my-events" element={<MyEvents />} />
+        <Route path="/search" element={<ResultsPage />} />
       </Route>
     </Routes>
   </BrowserRouter>

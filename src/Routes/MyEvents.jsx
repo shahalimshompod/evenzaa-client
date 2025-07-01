@@ -81,13 +81,13 @@ const MyEvents = () => {
         </div>
 
         {loading ? (
-          <div className="flex items-center justify-center h-[400px]">
-            <span className="loading loading-spinner text-error"></span>
+          <div className="flex justify-center items-center py-20">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#FE3E01]"></div>
           </div>
         ) : myEvents?.length === 0 ? (
           <div className="text-center py-12">
             <h2 className="text-xl font-medium text-gray-600 sand">
-              No bookings found
+              No Events found
             </h2>
             <Link to="/events">
               <button className="sand cursor-pointer rounded-none border border-[#FE3E01] mt-4 px-4 py-2 bg-transparent hover:text-white text-black hover:bg-[#FE3E01] transition duration-300 font-semibold">
