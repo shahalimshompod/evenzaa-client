@@ -116,16 +116,14 @@ const Navbar = () => {
   // Define routes
   const routes = [
     { path: "/", label: "Home" },
-    { path: "/events", label: "Events" },
-    { path: "/about-us", label: "About Us" },
     ...(user
       ? [
-          { path: "/my-bookings", label: "My Bookings" },
-          ...(role === "admin"
-            ? [{ path: "/add-event", label: "Add Event" }]
-            : []),
+          { path: "/events", label: "Events" },
+          { path: "/my-bookings", label: "My Events" },
+          { path: "/add-event", label: "Add Event" },
         ]
       : []),
+    { path: "/about-us", label: "About Us" },
   ];
 
   // Dynamic styles

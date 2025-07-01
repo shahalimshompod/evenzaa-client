@@ -2,6 +2,7 @@ import React from "react";
 import HomeBanner from "../Sections/HomeBanner";
 import WelcomeSection from "../Sections/WelcomeSection";
 import FeaturedEvents from "../Sections/FeaturedEvents";
+import CategorySection from "../Sections/CategorySection";
 
 const HomeLayout = () => {
   return (
@@ -9,6 +10,7 @@ const HomeLayout = () => {
       <HomeBanner />
       <WelcomeSection />
       <FeaturedEvents />
+      <CategorySection />
     </div>
   );
 };
