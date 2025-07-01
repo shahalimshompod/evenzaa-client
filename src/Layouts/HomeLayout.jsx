@@ -1,11 +1,14 @@
-import React from 'react';
+import React from "react";
+import HomeBanner from "../Sections/HomeBanner";
+import WelcomeSection from "../Sections/WelcomeSection";
 
 const HomeLayout = () => {
-    return (
-        <div>
-            <h1>Hi im home layout</h1>
-        </div>
-    );
+  return (
+    <div>
+      <HomeBanner />
+      <WelcomeSection />
+    </div>
+  );
 };
 
 export default HomeLayout;
