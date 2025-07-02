@@ -10,7 +10,7 @@ const DynamicTitle = () => {
 
     let title = "Evenzaa"; // default title
 
-    if (path === "/") title = "Home | Event App";
+    if (path === "/") title = "Home | Evenzaa";
     else if (path === "/about-us") title = "About Us | Evenzaa";
     else if (path === "/events") title = "All Events | Evenzaa";
     else if (path.startsWith("/events/")) title = "Category Events | Evenzaa";
