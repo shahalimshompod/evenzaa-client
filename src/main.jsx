@@ -37,7 +37,7 @@ ReactDOM.createRoot(root).render(
           path="/events/:category"
           element={
             <SecureRoute>
-              <EventsByCategory />
+              <EventsByCategory />{" "}
             </SecureRoute>
           }
         />
