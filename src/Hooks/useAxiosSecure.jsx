@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:3000", //root api
+  baseURL: "https://evenzaa-server.vercel.app", //root api
   headers: {
     "Content-Type": "application/json",
   },

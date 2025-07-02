@@ -25,8 +25,6 @@ const LoginModal = () => {
     setRegisterLoader,
     loginLoader,
     setIsLoginModalOpen,
-    setLoginLoader,
-    isLoggedIn,
     setIsLoggedIn,
   } = stateData;
 
