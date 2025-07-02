@@ -1,5 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router";
+
+const MotionLink = motion(Link);
 
 const CategorySection = () => {
   const routes = [
@@ -52,7 +55,7 @@ const CategorySection = () => {
   return (
     <div className="py-12 md:py-16 lg:py-20 xl:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Heading */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -60,7 +63,8 @@ const CategorySection = () => {
         className="flex flex-col items-center mb-12 md:mb-16 lg:mb-20 text-center"
       >
         <h1 className="marcel text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 md:mb-6">
-          Find Your Perfect <span className="text-[#FE3E01]">Event</span> by Category
+          Find Your Perfect <span className="text-[#FE3E01]">Event</span> by
+          Category
         </h1>
         <p className="sand text-base sm:text-lg md:text-xl max-w-3xl mx-auto text-gray-600">
           From music festivals to tech conferences, explore events that align
@@ -78,9 +82,9 @@ const CategorySection = () => {
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
       >
         {routes.map((route, idx) => (
-          <motion.a
+          <MotionLink
             key={idx}
-            href={route.path}
+            to={route.path}
             variants={item}
             className="group block w-full"
           >
@@ -107,21 +111,14 @@ const CategorySection = () => {
                 <p className="sand text-sm sm:text-base opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                   Explore upcoming {route.category.toLowerCase()} events
                 </p>
-                
+
                 {/* Mobile-only label */}
-                <p className="sand text-sm sm:hidden mt-2">
-                  Tap to explore
-                </p>
+                <p className="sand text-sm sm:hidden mt-2">Tap to explore</p>
               </div>
             </div>
-          </motion.a>
+          </MotionLink>
         ))}
       </motion.div>
-
-      {/* Responsive Note - Only shows on mobile */}
-      <p className="sand text-sm text-center text-gray-500 mt-6 sm:hidden">
-        Swipe horizontally to see all categories
-      </p>
     </div>
   );
 };
